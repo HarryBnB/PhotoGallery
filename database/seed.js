@@ -24,10 +24,10 @@ const createData = function(callback=()=>{}){
       var intro = faker.lorem.sentence();
 
       // mysql query
-      db.connection.query('INSERT INTO photos (photo_url, intro, property_id) VALUES(?, ?, ?)', [randomURL, intro, propertyID], function (err, rows, fields) {
-        if (err) {
-          console.log('Failed to create data', err);
-          callback(err);
+      db.connection.query('INSERT INTO photos (photo_url, intro, property_id) VALUES(?, ?, ?)', [randomURL, intro, propertyID], function (error, results, fields) {
+        if (error) {
+          console.log('Failed to create data', error);
+          callback(error);
         } else {
           console.log('Success to create data');
           callback(null);
