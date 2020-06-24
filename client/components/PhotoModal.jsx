@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 const PhotoModal = (props) => (
   <div className="currentPhotoModal">
-    <img src={props.modal.photo_url}/>
+    <div className="closeButton" onClick={() => props.closePhotoModal()}>X Close</div>
+    <div className="orderNum">{`${1 + props.photos.findIndex(photo => photo.photo_id === props.modal.photo_id)} / ${props.photos.length}`}</div>
+    <img className="modalPhoto" src={props.modal.photo_url}/>
     <div className="description">{props.modal.intro}</div>
   </div>
 );

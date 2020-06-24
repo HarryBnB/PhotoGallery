@@ -16,6 +16,7 @@ class App extends React.Component {
     }
 
     this.handlePhotoClick = this.handlePhotoClick.bind(this);
+    this.closePhotoModal = this.closePhotoModal.bind(this);
   }
 
   componentDidMount(){
@@ -29,7 +30,7 @@ class App extends React.Component {
       });
     });
   }
-
+  // Open Photo Modal
   handlePhotoClick(propertyID, photoID) {
     $.get(`/rooms/${propertyID}/photos/${photoID}`, (photo) => {
       this.setState({
@@ -38,13 +39,19 @@ class App extends React.Component {
       });
     });
   }
+  // Close Photo Modal and back to Gallery
+  closePhotoModal() {
+    this.setState({
+      showPhotoModal: false
+    });
+  }
 
   render() {
     if(this.state.showPhotoModal){
       return (
         <div>
           <div>Photo Modal</div>
-          <PhotoModal modal={this.state.modal}/>
+          <PhotoModal modal={this.state.modal} closePhotoModal={this.closePhotoModal} photos={this.state.view}/>
         </div>
       );
     } else {
