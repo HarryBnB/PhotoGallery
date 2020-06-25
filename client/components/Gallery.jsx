@@ -2,12 +2,20 @@ import React from 'react';
 import Photo from './Photo.jsx';
 import styled from 'styled-components';
 
+const GalleryContainer = styled.ul`
+  height: 680px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+`;
+
 const Gallery = (props) => (
-  <div className="gallery">
+  <GalleryContainer>
     {props.photos.map((photo) => (
-      <Photo currentPhoto={photo} handlePhotoClick={props.handlePhotoClick}/>
+      <Photo currentPhoto={photo} handlePhotoClick={props.handlePhotoClick} allFivePhotos={props.photos}/>
     ))}
-  </div>
+  </GalleryContainer>
 );
 
 export default Gallery;
